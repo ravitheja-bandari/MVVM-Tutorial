@@ -1,13 +1,18 @@
 package com.rt.mvvmtutorial
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class CounterViewModel(startCount: Int) : ViewModel() {
+class CounterViewModel() : ViewModel() {
+    var _startCount = 0
+    constructor(startCount: Int) : this() {
+        _startCount = startCount
+    }
 
-    private var counter = 0
+    var counter = 0
 
     init {
-        counter = startCount
+        counter = _startCount
     }
 
     fun getCurrentCounter(): Int {
@@ -17,4 +22,16 @@ class CounterViewModel(startCount: Int) : ViewModel() {
     fun getUpdatedCounter(): Int {
         return ++counter
     }
+
+     var count = MutableLiveData<Int>()
+
+    init {
+        count.value=0
+    }
+
+    fun updateCounter(){
+        count.value = (count.value)?.plus(1)
+    }
+
+
 }
