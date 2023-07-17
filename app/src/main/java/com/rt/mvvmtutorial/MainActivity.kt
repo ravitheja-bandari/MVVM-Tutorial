@@ -11,12 +11,14 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     lateinit var viewModel: CounterViewModel
+    lateinit var viewModelFactory: CounterViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        viewModel = ViewModelProvider(this).get(CounterViewModel::class.java)
+        viewModelFactory = CounterViewModelFactory(100)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(CounterViewModel::class.java)
 
         binding.apply {
             tvCount.text = viewModel.getCurrentCounter().toString()
