@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
 
     //View Model Example
-     var counterViewModel: CounterViewModel by viewModels()
+    lateinit var counterViewModel: CounterViewModel
     lateinit var counterViewModelFactory: CounterViewModelFactory
 
     //Live data Example
